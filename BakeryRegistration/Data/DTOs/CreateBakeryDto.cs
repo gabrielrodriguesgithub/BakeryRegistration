@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BakeryRegistration.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace BakeryRegistration.Data.DTOs
 {
@@ -7,12 +8,9 @@ namespace BakeryRegistration.Data.DTOs
         [Required, StringLength(200)]
         [Display(Name = "Nome da Padaria")]
         public string Name { get; set; }
+        public UserModel Owner { get; set; }
 
-        [StringLength(200)]
-        [Display(Name = "Nome do Proprietário")]
-        public string OwnerName { get; set; }
-
-        [EmailAddress, StringLength(200)]
+        [EmailAddress, StringLength(100)]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
@@ -36,11 +34,11 @@ namespace BakeryRegistration.Data.DTOs
         [Display(Name = "Bairro")]
         public string Neighborhood { get; set; }
 
-        [StringLength(100)]
+        [StringLength(40)]
         [Display(Name = "Cidade")]
         public string City { get; set; }
 
-        [StringLength(50)]
+        [StringLength(40)]
         [Display(Name = "Estado")]
         public string State { get; set; }
 
