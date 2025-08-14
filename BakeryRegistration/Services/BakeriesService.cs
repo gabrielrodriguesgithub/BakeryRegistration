@@ -72,11 +72,6 @@ namespace BakeryRegistration.Services
         public void UpdateBakery(BakeryModel bakery)
         {
             var bakeryBanco = _context.Bakeries.FirstOrDefault(f => f.Id == bakery.Id);
-            bool exists = _context.Bakeries.Any(b => b.Name == bakery.Name);
-            if (exists)
-            {
-                throw new ApplicationException("Já existe uma padaria cadastrada com esse nome.");
-            }
             if (bakery.Name is not null)
             {
                 bakeryBanco.Name = bakery.Name;

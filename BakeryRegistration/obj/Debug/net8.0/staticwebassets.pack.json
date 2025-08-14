@@ -245,6 +245,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\92fa62be-3787-4fd2-802e-b61d452fc018-removebg-preview.png",
+      "PackagePath": "staticwebassets\\uploads\\92fa62be-3787-4fd2-802e-b61d452fc018-removebg-preview.png"
+    },
+    {
       "Id": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\Captura de tela 2025-05-28 092532.png",
       "PackagePath": "staticwebassets\\uploads\\Captura de tela 2025-05-28 092532.png"
     },

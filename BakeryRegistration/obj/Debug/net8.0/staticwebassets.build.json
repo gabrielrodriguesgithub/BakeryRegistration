@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uOFNPIbq59ugDvQZtu0kt6pUnbWuXSsieUKIqysPp68=",
+  "Hash": "bbv+t+3eQLFXwwO6geT0EUTAdoYtsbJ6gFQmwGIbe9k=",
   "Source": "BakeryRegistration",
   "BasePath": "_content/BakeryRegistration",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\92fa62be-3787-4fd2-802e-b61d452fc018-removebg-preview.png",
+      "SourceId": "BakeryRegistration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\",
+      "BasePath": "_content/BakeryRegistration",
+      "RelativePath": "uploads/92fa62be-3787-4fd2-802e-b61d452fc018-removebg-preview.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\92fa62be-3787-4fd2-802e-b61d452fc018-removebg-preview.png"
     },
     {
       "Identity": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\Captura de tela 2025-05-28 092532.png",
