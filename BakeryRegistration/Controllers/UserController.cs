@@ -44,7 +44,7 @@ namespace BakeryRegistration.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginUserDto dto)
+        public async Task<IActionResult> Login( LoginUserDto dto)
         {
             var token = await _usuarioService.Login(dto);
 

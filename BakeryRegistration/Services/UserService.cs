@@ -7,6 +7,7 @@ using BakeryRegistration.Data;
 using BakeryRegistration.Data.DTOs;
 using BakeryRegistration.Models;
 using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace BakeryRegistration.Services
 {
@@ -41,23 +42,18 @@ namespace BakeryRegistration.Services
                 throw new ApplicationException("Falha ao cadastrar usuário!");
             }
 
-            Console.WriteLine("Usuario admin cadastrado!");
         }
 
 
         public async Task<string> Login(LoginUserDto dto)
         {
-            try
-            {
-                var resultado = await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false);
+            
+            var resultado = await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false);
 
-            }catch (Exception ex)
+            if (!resultado.Succeeded)
             {
-                Console.WriteLine(ex.Message);
+                return null;
             }
-
-
-            Console.WriteLine("Usuario Logado!");
             var usuario = _signInManager.UserManager.Users.FirstOrDefault(u => u.UserName.Equals(dto.Username));
 
             var token = _tokenService.GerarToken(usuario);
@@ -67,8 +63,9 @@ namespace BakeryRegistration.Services
 
         public UserModel GetLoggedInUser()
         {
-            var nomeUsuario = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type.Equals(ClaimTypes.Name))?.Value;
-
+            var nomeUsuario = _contextAccessor.HttpContext.User.Claims
+            .FirstOrDefault(c => c.Type == ClaimTypes.Name || c.Type == JwtRegisteredClaimNames.Sub)
+            ?.Value;
             if (string.IsNullOrEmpty(nomeUsuario))
             {
                 return null;

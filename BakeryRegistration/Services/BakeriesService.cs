@@ -2,6 +2,7 @@
 using BakeryRegistration.Data;
 using BakeryRegistration.Data.DTOs;
 using BakeryRegistration.Models;
+using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -27,7 +28,7 @@ namespace BakeryRegistration.Services
             var loggedUser = _userService.GetLoggedInUser();
 
             var bakeries = await _context.Bakeries
-                .Where(b => b.Owner == loggedUser)
+                .Where(b => b.Owner.UserName == loggedUser.UserName)
                 .ToListAsync();
 
             return bakeries;
@@ -64,15 +65,18 @@ namespace BakeryRegistration.Services
 
             if (resultado == 0)
             {
-                throw new ApplicationException("Falha ao cadastrar usuário!");
+                throw new ApplicationException("Falha ao cadastrar padaria!");
             }
-            Console.WriteLine("Usuário fornecedor cadastrado!");
         }
 
         public void UpdateBakery(BakeryModel bakery)
         {
             var bakeryBanco = _context.Bakeries.FirstOrDefault(f => f.Id == bakery.Id);
-
+            bool exists = _context.Bakeries.Any(b => b.Name == bakery.Name);
+            if (exists)
+            {
+                throw new ApplicationException("Já existe uma padaria cadastrada com esse nome.");
+            }
             if (bakery.Name is not null)
             {
                 bakeryBanco.Name = bakery.Name;
@@ -115,7 +119,7 @@ namespace BakeryRegistration.Services
         {
             var idInt = int.Parse(id); 
             var bakery = _context.Bakeries.FirstOrDefault(f => f.Id.Equals(idInt));
-            if (bakery == null) throw new KeyNotFoundException("Fornecedor não encontrado.");
+            if (bakery == null) throw new KeyNotFoundException("Padaria não encontrada.");
 
             _context.Bakeries.Remove(bakery);
             _context.SaveChanges();

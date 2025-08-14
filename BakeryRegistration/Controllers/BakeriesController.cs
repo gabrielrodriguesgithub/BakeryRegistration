@@ -7,11 +7,11 @@ using System.Linq;
 using BakeryRegistration.Services;
 using BakeryRegistration.Data.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using Humanizer;
 
 namespace BakeryRegistration.Controllers
 {
     [Route("[Controller]")]
-    [Authorize]
     public class BakeriesController : Controller
     {
         private BakeriesService _bakeriesService;
@@ -31,6 +31,11 @@ namespace BakeryRegistration.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> CreateBakery(CreateBakeryDto dto)
         {
+            var usuario = _userService.GetLoggedInUser();
+            if (usuario == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
             if (dto.Photo != null && dto.Photo.Length > 0)
             {
 
@@ -79,8 +84,16 @@ namespace BakeryRegistration.Controllers
         [HttpPut("Put")]
         public IActionResult UpdateBakery([FromBody] BakeryModel bakery)
         {
-            _bakeriesService.UpdateBakery(bakery);
-            return Ok(bakery);
+            try
+            {
+                _bakeriesService.UpdateBakery(bakery);
+                return Ok(bakery);
+            }
+            catch (ApplicationException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View("Bakery/ListBakeries", bakery);
+            }
         }
 
         [HttpDelete("Delete/{id}")]

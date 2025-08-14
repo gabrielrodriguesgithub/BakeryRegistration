@@ -19,6 +19,7 @@ namespace BakeryRegistration.Services
         {
             var claims = new[]
             {
+                new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

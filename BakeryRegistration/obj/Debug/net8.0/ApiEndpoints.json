@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "ContainingType": "BakeryRegistration.Controllers.ApiExterna.BakeriesExternaController",
+    "Method": "GetBakeries",
+    "RelativePath": "api/BakeriesExterna/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
