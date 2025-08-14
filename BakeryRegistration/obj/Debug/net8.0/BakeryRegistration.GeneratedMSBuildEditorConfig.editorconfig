@@ -38,12 +38,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJha2VyeVxDcmVhdGVCYWtlcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/bielr/source/repos/BakeryRegistration/BakeryRegistration/Views/Shared/Bakery/ListBakeries.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJha2VyeVxMaXN0QmFrZXJpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/bielr/source/repos/BakeryRegistration/BakeryRegistration/Views/Shared/Bakery/ListDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJha2VyeVxMaXN0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bielr/source/repos/BakeryRegistration/BakeryRegistration/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bielr/source/repos/BakeryRegistration/BakeryRegistration/Views/Shared/Users/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFVzZXJzXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bielr/source/repos/BakeryRegistration/BakeryRegistration/Views/Shared/Users/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFVzZXJzXFJlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bielr/source/repos/BakeryRegistration/BakeryRegistration/Views/Shared/_ValidationScriptsPartial.cshtml]

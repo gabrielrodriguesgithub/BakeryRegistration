@@ -245,6 +245,22 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\Captura de tela 2025-05-28 092532.png",
+      "PackagePath": "staticwebassets\\uploads\\Captura de tela 2025-05-28 092532.png"
+    },
+    {
+      "Id": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\Captura de tela 2025-05-28 092628.png",
+      "PackagePath": "staticwebassets\\uploads\\Captura de tela 2025-05-28 092628.png"
+    },
+    {
+      "Id": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\Captura de tela 2025-05-28 092734.png",
+      "PackagePath": "staticwebassets\\uploads\\Captura de tela 2025-05-28 092734.png"
+    },
+    {
+      "Id": "C:\\Users\\bielr\\source\\repos\\BakeryRegistration\\BakeryRegistration\\wwwroot\\uploads\\Captura de tela 2025-05-29 222702.png",
+      "PackagePath": "staticwebassets\\uploads\\Captura de tela 2025-05-29 222702.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BakeryRegistration.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

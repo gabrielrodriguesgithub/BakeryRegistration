@@ -1,0 +1,160 @@
+﻿@model IEnumerable<BakeryRegistration.Models.BakeryModel>
+
+@{
+    ViewData["Title"] = "Padarias";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Padarias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">Padarias Cadastradas</h1>
+            <a href="/Bakeries/Register" class="btn btn-success">Cadastrar Padaria</a>
+        </div>
+        <div class="row">
+            @foreach (var padaria in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">@padaria.Name</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Nome do dono:</strong> @padaria.Owner</p>
+                            <p><strong>Email:</strong> @padaria.Email</p>
+                            <p><strong>Telefone:</strong> @padaria.Phone</p>
+                            <p><strong>Rua:</strong> @padaria.AddressStreet</p>
+                            <p><strong>Número:</strong> @padaria.AddressNumber</p>
+                            <p><strong>Complemento:</strong> @padaria.AddressComplement</p>
+                            <p><strong>Bairro:</strong> @padaria.Neighborhood</p>
+                            <p><strong>Cidade:</strong> @padaria.City</p>
+                            <p><strong>Estado:</strong> @padaria.State</p>
+                            @if (!string.IsNullOrEmpty(padaria.PhotoPath))
+                            {
+                                <p><strong>Foto da Padaria:</strong></p>
+                                <img src="@padaria.PhotoPath" alt="Foto da Padaria" class="img-fluid rounded mb-2" />
+                            }
+
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#editCard_@padaria.Id">Editar</button>
+                            <button class="btn btn-danger" onclick="deletePadaria('@padaria.Id')">Excluir</button>
+
+                            <div id="editCard_@padaria.Id" class="collapse mt-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Editar Informações da Padaria</h5>
+                                        <form id="editForm_@padaria.Id">
+                                            <div class="form-group">
+                                                <label for="Name_@padaria.Id">Nome</label>
+                                                <input type="text" class="form-control" id="Name_@padaria.Id" value="@padaria.Name" maxlength="100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Email_@padaria.Id">E-mail</label>
+                                                <input type="text" class="form-control" id="Email_@padaria.Id" value="@padaria.Email" maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Phone_@padaria.Id">Telefone</label>
+                                                <input type="text" class="form-control" id="Phone_@padaria.Id" value="@padaria.Phone" maxlength="15">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="AddressStreet_@padaria.Id">Rua</label>
+                                                <input type="text" class="form-control" id="AddressStreet_@padaria.Id" value="@padaria.AddressStreet" maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="AddressNumber_@padaria.Id">Número</label>
+                                                <input type="text" class="form-control" id="AddressNumber_@padaria.Id" value="@padaria.AddressNumber" maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="AddressComplement_@padaria.Id">Complemento</label>
+                                                <input type="text" class="form-control" id="AddressComplement_@padaria.Id" value="@padaria.AddressComplement" maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Neighborhood_@padaria.Id">Bairro</label>
+                                                <input type="text" class="form-control" id="Neighborhood_@padaria.Id" value="@padaria.Neighborhood" maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="City_@padaria.Id">Cidade</label>
+                                                <input type="text" class="form-control" id="City_@padaria.Id" value="@padaria.City" maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="State_@padaria.Id">Estado</label>
+                                                <input type="text" class="form-control" id="State_@padaria.Id" value="@padaria.State" maxlength="255">
+                                            </div>
+                                            <button type="button" class="btn btn-success" onclick="saveChanges('@padaria.Id')">Salvar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script>
+        async function saveChanges(id) {
+            const form = document.getElementById(`editForm_${id}`);
+            const bakery = {
+                Id: id,
+                Name: form.querySelector(`#Name_${id}`).value,
+                Email: form.querySelector(`#Email_${id}`).value,
+                Phone: form.querySelector(`#Phone_${id}`).value,
+                AddressStreet: form.querySelector(`#AddressStreet_${id}`).value,
+                AddressNumber: form.querySelector(`#AddressNumber_${id}`).value,
+                AddressComplement: form.querySelector(`#AddressComplement_${id}`).value,
+                Neighborhood: form.querySelector(`#Neighborhood_${id}`).value,
+                City: form.querySelector(`#City_${id}`).value,
+                State: form.querySelector(`#State_${id}`).value
+            };
+
+            const url = 'https://localhost:7210/Bakeries/Put';
+
+            try {
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bakery)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao atualizar padaria: ' + await response.text());
+                }
+
+                console.log('Padaria atualizada com sucesso');
+                location.reload();
+            } catch (error) {
+                console.error(error);
+                alert('Falha ao atualizar padaria.');
+            }
+        }
+
+        async function deletePadaria(id) {
+            const url = `https://localhost:7210/Bakeries/Delete/${id}`;
+            try {
+                const response = await fetch(url, { method: 'DELETE' });
+                if (response.status !== 204) {
+                    throw new Error('Erro ao excluir padaria');
+                }
+                location.reload();
+            } catch (error) {
+                console.error(error);
+                alert('Falha ao excluir padaria.');
+            }
+        }
+    </script>
+</body>
+</html>
